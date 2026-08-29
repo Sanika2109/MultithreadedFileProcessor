@@ -47,12 +47,18 @@ The system processes files concurrently, calculates file statistics, handles pro
               +--------+--------+
               |                 |
           results.csv     benchmark_results.csv
-````
+```
 
 ## Project Structure
 
 ```text
 MultithreadedFileProcessor/
+│
+├── images/
+│   ├── Main_Benchmark.png
+│   ├── FileProcessor_Test.png
+│   ├── TaskQueue_Test.png
+│   └── ThreadPool_Test.png
 │
 ├── src/
 │   ├── Benchmark.*
@@ -81,16 +87,23 @@ MultithreadedFileProcessor/
 
 The application runs each configuration **5 times** and reports average, minimum, maximum execution time, and speedup.
 
-Tested configurations:
+![Performance Benchmark](images/Main_Benchmark.png)
 
-| Threads | Typical Speedup |
-| ------: | --------------: |
-|       1 |           ~1.0× |
-|       2 |           ~2.2× |
-|       4 |           ~3.2× |
-|       8 |           ~5.4× |
+### Benchmark Results
 
-A representative final run processed **50 files** successfully using 4 worker threads with approximately **3.4× speedup** over the single-threaded average.
+| Threads | Average Time (s) | Speedup |
+|--------:|-----------------:|--------:|
+| 1 | 0.641457 | 1.01× |
+| 2 | 0.335646 | 1.94× |
+| 4 | 0.216873 | 3.00× |
+| 8 | 0.135180 | 4.81× |
+
+The final processing run used **4 worker threads** and processed **50 files successfully** with **0 failures**.
+
+```text
+Correctness check: PASSED
+Final speedup: 2.95x
+```
 
 > Performance varies depending on hardware, filesystem, workload, and system load.
 
@@ -104,12 +117,10 @@ benchmark_results/benchmark_results.csv
 
 Multithreaded results are compared against the single-threaded baseline to verify:
 
-* Filename
-* Line count
-* Word count
-* Character count
-
-Example:
+- Filename
+- Line count
+- Word count
+- Character count
 
 ```text
 Correctness check: PASSED
@@ -119,35 +130,42 @@ Correctness check: PASSED
 
 GoogleTest is used for automated testing.
 
-```text
-FileProcessorTest : 5 tests
-TaskQueueTest     : 6 tests
-ThreadPoolTest    : 6 tests
---------------------------------
-Total             : 17 tests
-```
+### File Processor Tests
 
-Expected:
+Tests validate file statistics and error handling.
 
-```text
-[  PASSED  ] 17 tests.
-```
+![FileProcessor Tests](images/FileProcessor_Test.png)
 
-Run the test suite:
+### Task Queue Tests
 
-```bash
-./run_tests.bat
-```
+Tests validate task insertion, retrieval, ordering, completion handling, and producer-consumer behavior.
+
+![TaskQueue Tests](images/TaskQueue_Test.png)
+
+### Thread Pool Tests
+
+Tests validate worker startup/shutdown, task processing, error handling, multiple-worker processing, and result collection.
+
+![ThreadPool Tests](images/ThreadPool_Test.png)
+
+### Test Summary
+
+| Test Suite | Tests | Result |
+|---|---:|---|
+| FileProcessor | 5/5 | PASSED |
+| TaskQueue | 6/6 | PASSED |
+| ThreadPool | 6/6 | PASSED |
+| **Total** | **17/17** | **PASSED** |
 
 ## Build
 
 ### Requirements
 
-* Windows
-* C++17
-* GCC / MinGW
-* MSYS2 UCRT64
-* GoogleTest
+- Windows
+- C++17
+- GCC / MinGW
+- MSYS2 UCRT64
+- GoogleTest
 
 Compile:
 
@@ -170,6 +188,24 @@ Run:
 ./file_processor.exe
 ```
 
+## Run Tests
+
+From MSYS2 UCRT64:
+
+```bash
+cmd.exe /c run_tests.bat
+```
+
+Expected result:
+
+```text
+FileProcessor : 5/5 PASSED
+TaskQueue     : 6/6 PASSED
+ThreadPool    : 6/6 PASSED
+
+TOTAL         : 17/17 PASSED
+```
+
 ## Output
 
 ```text
@@ -180,3 +216,6 @@ output/
 benchmark_results/
 └── benchmark_results.csv
 ```
+
+- **MSYS2 UCRT64**
+- **CSV**
