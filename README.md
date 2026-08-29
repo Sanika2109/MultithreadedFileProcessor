@@ -216,6 +216,3 @@ output/
 benchmark_results/
 └── benchmark_results.csv
 ```
-
-- **MSYS2 UCRT64**
-- **CSV**
