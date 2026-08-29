@@ -1,0 +1,6 @@
+mode,threads,runs,average_seconds,min_seconds,max_seconds,speedup
+single-threaded,1,5,0.693311,0.671260,0.728219,1.000000
+multithreaded,1,5,0.636975,0.627807,0.655335,1.088443
+multithreaded,2,5,0.339088,0.331180,0.355801,2.044633
+multithreaded,4,5,0.207486,0.194214,0.213764,3.341489
+multithreaded,8,5,0.127839,0.124416,0.135075,5.423322

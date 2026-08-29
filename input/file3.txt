@@ -1,0 +1,5 @@
+Software testing is an important part of software development.
+Unit tests verify that individual functions behave as expected.
+Good test cases should include normal inputs and edge cases.
+Debugging helps developers identify and resolve unexpected behavior.
+Automated testing improves reliability and makes future changes safer.

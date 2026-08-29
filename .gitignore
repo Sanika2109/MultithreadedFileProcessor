@@ -1,0 +1,23 @@
+# Executables
+*.exe
+*.out
+*.obj
+*.o
+
+# Build directories
+build/
+cmake-build-*/
+
+# Generated output
+output/
+
+# Temporary files
+*.tmp
+*.log
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,5 @@
+Multithreading allows a program to perform multiple tasks concurrently.
+C++ provides several standard library features for concurrent programming.
+Threads can improve application responsiveness and performance.
+However, shared resources must be protected from race conditions.
+Mutexes are commonly used to synchronize access to shared data.
